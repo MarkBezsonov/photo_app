@@ -17,9 +17,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # For user authentication
 gem 'devise'
+# Font-awesome
+gem 'font-awesome-rails'
 # Bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+# jQuery
 gem 'jquery-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
