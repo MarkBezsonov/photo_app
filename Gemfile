@@ -19,6 +19,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Font-awesome
 gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 # Bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
