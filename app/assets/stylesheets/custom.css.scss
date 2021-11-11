@@ -49,3 +49,27 @@
 .yield {
   margin-top: 4%;
 }
+
+.features {
+  ul {
+    margin-left: 0;
+    padding-left: 15px;
+  }
+}
+
+.jumbotron {
+  text-align: center;
+  background-image: asset-url('camera.jpg');
+  background-size: cover;
+  padding-top: 15%;
+  padding-bottom: 20%;
+  height: 400px;
+  color: #fff;
+  font-family: 'Helvetica Neue' !important;
+  text-shadow: -1px 0 #555, 0 1px #555, 1px 0 #555, 0 -1px #555;
+}
+
+.plans {
+  margin-left: 22.5%;
+  padding-right: 0 !important;
+}
