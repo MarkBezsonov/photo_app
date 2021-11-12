@@ -3,4 +3,4 @@ Rails.configuration.stripe = {
   :secret_key => ENV['STRIPE_TEST_SECRET_KEY']
 }
 
-Stripe.api.key = Rails.configuration.stripe[:secret_key]
+# Stripe.api.key = Rails.configuration.stripe[:secret_key]
