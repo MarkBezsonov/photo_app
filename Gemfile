@@ -27,6 +27,8 @@ gem 'devise-bootstrap-views'
 gem 'jquery-rails'
 # For environmental variables
 gem 'figaro'
+# Payment processing
+gem 'stripe'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
