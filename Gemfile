@@ -33,6 +33,12 @@ gem 'stripe'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# For image uploads
+gem 'carrierwave'
+# For image resizing
+gem 'mini_magick'
+# For image handling in production
+gem 'fog'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

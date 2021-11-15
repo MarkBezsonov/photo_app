@@ -16,7 +16,7 @@ class Payment < ApplicationRecord
       customer: customer.id, 
       amount: 1000,
       currency: 'USD', 
-      description: 'Standard Plan', 
+      description: 'Standard Plan'
     })
   end
 end
