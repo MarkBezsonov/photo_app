@@ -1,10 +1,9 @@
-<script language="Javascript">
-  Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
+<!-- <script language="Javascript">
+  Stripe.setPublishableKey("<%= Figaro.env.stripe_test_secret_key %>");
 </script>
 
-<%= bootstrap_devise_error_messages! %>
-
 <div class="panel panel-default devise-bs">
+  <%= bootstrap_devise_error_messages! %>
   <div class="panel-heading">
     <h1><%= t('.sign_up', default: 'Sign Up') %></h1>
   </div>
@@ -34,18 +33,18 @@
           </div>
           <div class="form-group col-md-2 no-left-gap">
             <%= p.label :card_cvv, "Card CVV", data: { stripe: 'label' } %>
-            <%= p.text_field :card_cvv, class: "form-control", required: true, data: { stripe: 'cvc' } %>
+            <%= p.text_field :card_cvv, class: "form-control", required: true, data: { stripe: 'cvv' } %>
           </div>
           <div class="form-group col-md-6 no-left-gap">
-            <div class="col-md-12">
+            <div class="col-md-12 no-left-gap">
               <%= p.label :card_expires, "Card Expiration MM/YYYY", data: { stripe: 'label' } %>
             </div>
-            <div class="row">
-              <div class="col-md-3">
+            <div class="row no-left-gap">
+              <div class="col-md-5 no-left-gap">
                 <%= p.select :card_expires_month, options_for_select(Payment.month_options), 
                 {include_blank: 'Month'}, 'data-stripe' => 'exp-month', class: 'form-control', required: true %>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-5 no-left-gap">
                 <%= p.select :card_expires_year, options_for_select(Payment.year_options.push), 
                 {include_blank: 'Year'}, class: 'form-control', data: {stripe: 'exp-year'}, required: true %>
               </div>
@@ -56,5 +55,62 @@
       <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary' %>
     <% end %>
   </div>
-</div>
+</div> -->
+
+<h1><%= t('.sign_up') %></h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+            html: { role: "form", class: "cc_form" }) do |f| %>
+  <%= bootstrap_devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+    <% if @minimum_password_length %>
+      <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <div id="<%= :card %>" class="m-2"></div>
+      <div id="card-errors"></div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  var stripe = Stripe("<%= Figaro.env.stripe_test_publishable_key %>");
+  var elements = stripe.elements();
+
+  var card = elements.create('card', {
+    'style': {
+      'base': {
+        'fontFamily': 'Arial, sans-serif',
+        'fontSize': '18px',
+        'color': '#C1C7CD',
+      },
+      'invalid': {
+        'color': 'red',
+      },
+    }
+  });
+
+  card.mount("#<%= :card %>");
+</script>
+
 <%= render 'devise/shared/links' %>
