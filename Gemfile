@@ -38,7 +38,7 @@ gem 'carrierwave'
 # For image resizing
 gem 'mini_magick'
 # For image handling in production
-gem 'fog'
+gem 'fog-aws'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
