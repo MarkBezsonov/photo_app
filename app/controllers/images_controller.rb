@@ -1,13 +1,19 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /images or /images.json
   def index
-    @images = Image.all
+    @images = Image.all.where(user_id: current_user.id).order("created_at DESC").paginate(page: params[:pag_images], per_page: 5)
   end
 
   # GET /images/1 or /images/1.json
   def show
+    @image = Image.find(params[:id])
+    if current_user.id != @image.user_id
+      flash[:alert] = "You can only delete/edit your own article."
+      redirect_to root_path
+    end
   end
 
   # GET /images/new
@@ -65,5 +71,12 @@ class ImagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def image_params
       params.require(:image).permit(:name, :picture).merge(user: current_user)
+    end
+
+    def require_same_user
+      if current_user.id != @image.user_id
+        flash[:alert] = "You can only delete/edit your own article."
+        redirect_to root_path
+      end
     end
 end

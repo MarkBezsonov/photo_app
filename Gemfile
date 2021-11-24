@@ -39,6 +39,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 # For image handling in production
 gem 'fog-aws'
+# Enable pagination
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+# Enable search
+gem 'ransack'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

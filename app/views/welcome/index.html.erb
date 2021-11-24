@@ -1,5 +1,5 @@
 <% if current_user %>
-  <h3>Welcome: <%= current_user.email %></h3>
+  <%= render 'welcome/dashboard' %>
 <% else %>
   <div class="jumbotron">
     <h2>The Ultimate Photo Management App</h2>
@@ -7,40 +7,29 @@
       Manage all of your photo projects and files from one place. See how Photo App can benefit you!
     </p>
   </div>
-
-  <div class="row plans">
-    <div class="col-sm-5 p-3 text-left">
-      <h2>Standard Plan</h2>
-      <div class="price pull-top font-weight-bold mb-2">
-        Price: $10/month
-      </div>
-      <div class="features">
-        <ul>
-          <li>Unlimited Image Uploads</li>
-          <li>Responsive design</li>
-          <li>Access anywhere</li>
-        </ul>
-      </div>
-      <p>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-      </p>
+  <div class="container text-center">
+    <h2>Lifetime Access</h2>
+    <div class="font-weight-bold mb-2">
+      Price: $9.99
     </div>
-    <div class="col-sm-5 p-3 text-left">
-      <h2>Premium Plan</h2>
-      <div class="price pull-top font-weight-bold mb-2">
-        Price: $20/month
-      </div>
-      <div class="features">
-        <ul>
-          <li>Unlimited Image Uploads</li>
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <ul class="text-center plan-details">
+          <li class='font-weight-bold'>Unlimited Image Uploads</li>
           <li>Responsive design</li>
           <li>Access anywhere</li>
-          <li class='font-weight-bold'>Unlimited projects</li>
         </ul>
       </div>
-      <p>
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-      </p>
+      <div class="col-md-4"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
+        </p>
+      </div>
     </div>
   </div>
 <% end %>
